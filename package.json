@@ -1,0 +1,22 @@
+{
+  "name": "ncolorpalette-clusterer",
+  "version": "0.0.0",
+  "description": "cluster the pixels of an image into arbitrary groups",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "keywords": [
+    "k-means",
+    "clustering"
+  ],
+  "author": "Drew Petersen <kirbysayshi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "allocated-dynamic-typedarray": "^1.0.0"
+  },
+  "devDependencies": {
+    "arraydiff": "^0.1.1",
+    "tape": "^2.14.0"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "ncolorpalette-clusterer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cluster the pixels of an image into arbitrary groups",
   "main": "index.js",
   "scripts": {

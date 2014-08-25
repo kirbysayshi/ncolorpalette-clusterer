@@ -69,8 +69,7 @@ Efficiency
 The clusterer uses several primary techniques to be as efficient as possible in terms of execution speed and garbage creation:
 
 - A pixel is always represented as 4 uint8 integer values in contiguous TypedArrays, never as intermediate objects (like `{r: 0, g: 0, b: 0, a: 255}` or `[0, 0, 0, 255]`).
-- "Pointers" to pixels are stored in preallocated TypedArrays that simply point at the index of the `r` value in the original input data.
-- Means are also stored as a contiguous TypedArray.
+- "Pointers" to pixels are stored in preallocated TypedArrays that simply point at the index of the `r` (red) value in the original input data.
 
 The speed of this package could be improved in a few ways, but primarily through algorithm changes, such as creating an index of unique pixel colors for large images.
 

@@ -39,6 +39,10 @@ test('Clusterer: makes 4 clusters', function(t) {
       t.strictEqual(_c, c, 'complete param is clusterer');
       t.ok(iterationCount > 0, 'took more than one iteration to converge');
 
+      c.means.forEach(function(m, i) {
+        t.ok(!isNaN(m), 'mean ' + i + ' is ok');
+      })
+
       var output = c.applyPalette(palette4);
       t.deepEqual(output, new Uint8ClampedArray([
         3, 3, 3, 255,
@@ -72,7 +76,7 @@ test('Clusterer: makes 6 clusters', function(t) {
         5, 5, 5, 255,
         5, 5, 5, 255,
         5, 5, 5, 255,
-        2, 2, 2, 255,
+        0, 0, 0, 255,
         4, 4, 4, 255,
         4, 4, 4, 255,
         2, 2, 2, 255,
@@ -83,16 +87,16 @@ test('Clusterer: makes 6 clusters', function(t) {
       ];
 
       var expectedClusters = [
-        [0,0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0],
-        [12,24,28,32,36,40,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0,0],
-        [16,20,0,0,0,0,0,0,0,0,0],
-        [0,4,8,0,0,0,0,0,0,0,0]
+        [12],
+        [],
+        [40,24,28,32,36],
+        [],
+        [16,20],
+        [0,4,8]
       ];
 
       c.clusters.forEach(function(cluster, i) {
-        t.deepEqual(Array.apply([], cluster.data), expectedClusters[i],
+        t.deepEqual(cluster.toArray(), expectedClusters[i],
           'Cluster ' + i + ' has expected pixel offsets');
       })
 

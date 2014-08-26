@@ -60,6 +60,7 @@ Clusterer.prototype.updateMeans = function() {
   var means = this.means;
   var clusters = this.clusters;
   var sourceData = this.pixels;
+  var self = this;
 
   clusters.forEach(function(cluster, meanIdx) {
     var r = 0, g = 0, b = 0;
@@ -76,9 +77,9 @@ Clusterer.prototype.updateMeans = function() {
     var meanG = Math.floor(g / cluster.length()) || 0;
     var meanB = Math.floor(b / cluster.length()) || 0;
 
-    means[meanIdx*this.dataFactor+0] = meanR;
-    means[meanIdx*this.dataFactor+1] = meanG;
-    means[meanIdx*this.dataFactor+2] = meanB;
+    means[meanIdx*self.dataFactor+0] = meanR;
+    means[meanIdx*self.dataFactor+1] = meanG;
+    means[meanIdx*self.dataFactor+2] = meanB;
   });
 }
 

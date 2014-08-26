@@ -112,6 +112,7 @@ Clusterer.prototype.updateClusters = function() {
 Clusterer.prototype.solve = function(progress, complete) {
   var means = this.updateMeans.bind(this);
   var clusters = this.updateClusters.bind(this);
+  var self = this;
   var count = 0;
 
   if (this.async) {
@@ -121,10 +122,10 @@ Clusterer.prototype.solve = function(progress, complete) {
         var moved = clusters();
         count += 1;
         if (moved > 0) {
-          progress(count);
+          progress(self, count);
           next();
         } else {
-          complete(count);
+          complete(self, count);
         }
       }, 0)
     }())
@@ -134,9 +135,9 @@ Clusterer.prototype.solve = function(progress, complete) {
       means();
       moved = clusters();
       count += 1;
-      progress(count);
+      progress(self, count);
     }
-    complete(count);
+    complete(self, count);
   }
 }
 
